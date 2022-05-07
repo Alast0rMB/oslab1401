@@ -1,0 +1,3 @@
+Writing the data from the source to destination is used by
+the fopen() fclose() functions. using fget() and fprint(),
+we can read or write to said files.

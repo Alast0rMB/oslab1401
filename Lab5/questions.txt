@@ -1,0 +1,84 @@
+1. fork() -> child and parent both do the lines of code.
+			 There are other forks that copy diffrent amounts of state and are suitable for different purposes.
+			 Forks can be either single thread or multithread. Usually it's single thread by default.
+
+			 Fork returns PID to the parent and 0 to the child.
+			 *Negative Value: creation of a child process was unsuccessful.
+			 *Zero: Returned to the newly created child process.
+			 *Positive value: Returned to parent or caller. The value contains process ID of newly created child process.
+
+			 But, since they are sharing file handles changes to the file offset made by the parent/child will be reflected in the child/parent! 
+
+			 if using Cygwin then there is a fully featured fork() on windos.
+
+   spawn() -> These functions create and execute a new child process, named by path or file (depending on the form of the function used). The value of mode  determines how the program is loaded, and how the parent program will behave after the child program is initiated.
+   	P_WAIT
+	The child program is loaded into memory and executed, and then the parent program resumes execution.
+	P_NOWAIT
+	Causes the parent program to execute concurrently with the new child process.
+	P_NOWAITO
+	Causes the parent program to execute concurrently with the new child process. The wait() function cannot be used to obtain the exit code.
+	P_OVERLAY
+	The child program replaces the parent program in memory and is executed. No return is made to the parent program.
+
+	The various forms of the spawn functions are:
+
+	The l form : These contain an argument list, terminated by a NULL pointer. The argument arg0 should point to a filename that is associated with the child program.
+	The v form : These contain a pointer to an argument vector. The value in argv[0] should point to a filename that is associated with the child program. The last member of argv must be a NULL pointer. The value of argv cannot be NULL, but argv[0] can be a NULL pointer if no argument strings are passed.
+	The p form : These use paths listed in the PATH environment variable to locate the program to be loaded, provided certain conditions are met.
+	The e form : These pass a pointer to a new environment for the child program. The argument envp is an array of character pointers to null-terminated strings. The array of pointers is terminated by a NULL pointer. The value of envp cannot be NULL, but envp[0] can be a NULL pointer, if no environment strings are passed.
+
+2.	The exec() family has these behaviours:
+		l : arguments are passed as a list of strings to the main()
+		v : arguments are passed as an array of strings to the main()
+		p : path/s to search for the new running program
+		e : the environment can be specified by the caller
+	
+	*int execl(const char *path, const char *arg, …, NULL);
+	*int execlp(const char *file, const char *arg, …, NULL );
+	//execl() does not use the PATH environment variable. So, the full path of the executable file is required to run it with execl(). execlp() uses the PATH environment variable. So, if an executable file or command is available in the PATH, then the command or the filename is enough to run it, the full path is not needed.
+
+	*int execv(const char *path, char *const argv[]);
+	//With execv(), you can pass all the parameters in a NULL terminated array argv. The first element of the array should be the path of the executable file.
+	
+	*int execvp(const char *file, char *const argv[]); 
+	//Works the same way as execv() system function. But, the PATH environment variable is used. So, the full path of the executable file is not required just as in execlp().
+	
+	*int execle(const char *path, const char *arg, …, NULL, char * const envp[] );
+	//Works just like execl() but you can provide your own environment variables along with it. The environment variables are passed as an array envp. The last element of the envp array should be NULL. All the other elements contain the key-value pairs as string.
+	
+	*int execve(const char *file, char *const argv[], char *const envp[]);
+	//Just like execle() you can provide your own environment variables along with execve(). You can also pass arguments as arrays as you did in execv().
+
+3. The exit code of the main function is called "exit status code". Specifically, on most operating systems, a 0 exit code signifies a normal run (no real errors), and non-zero means there was a problem and the program had to exit abnormally.
+exit(1): It indicates abnormal termination of a program perhaps as a result a minor problem in the code.
+exit(2): It is similar to exit(1) but is displayed when the error occurred is a major one. This statement is rarely seen.
+exit(127): It indicates command not found.
+exit(132): It indicates that a program was aborted (received SIGILL), perhaps as a result of illegal instruction or that the binary is probably corrupt.
+exit(133): It indicates that a program was aborted (received SIGTRAP), perhaps as a result of dividing an integer by zero.
+exit(134): It indicates that a program was aborted (received SIGABRT), perhaps as a result of a failed assertion.
+exit(136): It indicates that a program was aborted (received SIGFPE), perhaps as a result of floating point exception or integer overflow.
+exit(137): It indicates that a program took up too much memory.
+exit(138): It indicates that a program was aborted (received SIGBUS), perhaps as a result of unaligned memory access.
+exit(139): It indicates Segmentation Fault which means that the program was trying to access a memory location not allocated to it. This mostly occurs while using pointers or trying to access an out-of-bounds array index.
+exit(158/152): It indicates that a program was aborted (received SIGXCPU), perhaps as a result of CPU time limit exceeded.
+exit(159/153): It indicates that a program was aborted (received SIGXFSZ), perhaps as a result of File size limit exceeded.
+
+1		catchall for general errors									let "var1 = 1/0"				miscellaneous errors, such as "divide by zero"
+2		misuse of shell builtins, according to Bash documentation								 	Seldom seen, usually defaults to exit code 1
+126		command invoked cannot execute	 															permission problem or command is not an executable
+127		"command not found"	 																		possible problem with $PATH or a typo
+128		invalid argument to exit									exit 3.14159					exit takes only integer args in the range 0 - 255
+128+n	fatal error signal "n"										kill -9 						$PPIDof script	$? returns 137 (128 + 9)
+130		script terminated by Control-C	 															Control-C is fatal error signal 2, (130 = 128 + 2, see above)
+255		exit status out of range									exit -1							exit takes only integer args in the range 0 - 255
+
+
+8. 	execve -> loads date image
+	brk(NULL) -> size of the data segment 0x55c19a7b5000
+	access -> checks "/etc/ld.so.preload" but it's not found
+	mmap -> map files or directories to memory
+	openat() opens the files and then close() closes it
+	read(3, "\177ELF\2\1\1\3\0\0\0\0\0\0\0\0\3\0>\0\1\0\0\0000\242\2\0\0\0\0\0"..., 832) -> file directory 3, buffer, bytes
+	write() -> to write the answer on the file that we want
+
