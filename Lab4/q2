@@ -1,0 +1,41 @@
+inode   | link count | type
+
+2124751		4			directory   -> oslab_fs
+2124874		2 			directory   -> dir_1		
+2127167    	3           		directory   -> dir_2
+2127513		1			file 	    -> file_1
+2127522		1			file 	    -> file_2
+2127883		2			directory   -> dir_3
+2097427		1 			file        -> file_3
+2127696		1  			file 	    -> file_4
+
+
+=====================================================
+.	inode 2124751
+dir_1 	inode 2124874 	--->	Root
+dir_2 	inode 2127167
+
+.	inode 2124874
+..	inode 2124751 	--->	dir_1
+file_1	inode 2127513
+file_2	inode 2127522
+
+.	inode 2127167
+..	inode 2124751	--->	dir_2
+dir_3	inode 2127883      
+file_3  inode 2097427
+
+"Arshia" ---> file_1
+
+"32" ---> file_2
+
+.	inode 2127883
+..	inode 2127522 	-->	dir_3
+file_4	inode 2127696
+
+"SCU" 	 --->	file_3
+
+"Ahvaz"	  -->	file_4
+
+
+

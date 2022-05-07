@@ -1,0 +1,24 @@
+5.fish & zsh
+zsh has more fetures and has plugins so you can use it!
+fish is like zsh but it is more user friendly as it is pre configured and other stuff. for example "tab completions", but it's not poisX complience?! for example createing a var or other stuff
+
+6.which is used to show the directory of the command that it's given to
+
+7.Bin is an abbreviation of Binaries. It's just a directory where a user of an operating system can expect to find applications.
+
+contains commands that may be used by both the system administrator and by users, but which are required when no other filesystems are mounted (e.g. in single user mode). It may also contain commands which are used indirectly by scripts
+
+8.
+/bin : For binaries usable before the /usr partition is mounted. This is used for trivial binaries used in the very early boot stage or ones that you need to have available in booting single-user mode. Think of binaries like cat, ls, etc.
+
+/sbin : Same, but for binaries with superuser (root) privileges required.
+
+9. Ricahrd M. Stallman & David MacKnezie
+GNU is an extensive collection of free software, which can be used as an operating system or can be used in parts with other operating systems. The use of the completed GNU tools led to the family of operating systems popularly known as Linux. Most of GNU is licensed under the GNU Project's own General Public License.
+
+GNU's not UNIX
+
+the copy left movement and opensource programming
+
+10. if used like this it'll show to content of the folder
+if used like cat test will show the content of the file

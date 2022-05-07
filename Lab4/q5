@@ -1,0 +1,6 @@
+file		Location	filesystem		mounted on
+----------------------------------------------------
+/sbin		in /usr		/dev/sda3		/ (root)
+/home		in /		/dev/sda3		/ (root)	
+/usr		in /		/dev/sda3		/ (root)
+/usr/share	in /usr		/dev/sda3		/ (root)
