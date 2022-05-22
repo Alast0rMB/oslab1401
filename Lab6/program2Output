@@ -1,0 +1,51 @@
+Parent is wating ...
+Hello Frist Child PID: 11648 started, Parent PID: 11647
+
+Hello Second Child PID: 11649 started, Parent PID: 11647
+
+Second child is Sleeping zzzzzzZZZZZZZ
+
+Child PRocess with pid 11648 is finished.
+Child PRocess with pid 11649 is finished.
+
+=============================================================
+Parent is wating ...
+Hello Frist Child PID: 11684 started, Parent PID: 11683
+
+Hello Second Child PID: 11685 started, Parent PID: 11683
+
+Second child is Sleeping zzzzzzZZZZZZZ
+
+Child PRocess with pid -1 is finished.
+Child PRocess with pid -1 is finished.
+=============================================================
+Parent is wating ...
+Hello Frist Child PID: 11718 started, Parent PID: 11717
+
+Hello Second Child PID: 11719 started, Parent PID: 11717
+
+Second child is Sleeping zzzzzzZZZZZZZ
+
+Child PRocess with pid -1 is finished.
+============================================================
+
+Hello Frist Child PID: 11796 started, Parent PID: 11795
+Parent is wating ...
+
+Hello Second Child PID: 11797 started, Parent PID: 11795
+
+Second child is Sleeping zzzzzzZZZZZZZ
+
+Child PRocess with pid -1 is finished.
+Child PRocess with pid 11797 is finished.
+===========================================================
+Parent is wating ...
+
+Hello Frist Child PID: 11848 started, Parent PID: 11847
+
+Hello Second Child PID: 11849 started, Parent PID: 11847
+
+Second child is Sleeping zzzzzzZZZZZZZ
+
+Child PRocess with pid -1 is finished.
+Child PRocess with pid -1 is finished.

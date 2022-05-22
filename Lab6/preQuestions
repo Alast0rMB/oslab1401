@@ -1,0 +1,26 @@
+A.
+
+A process group is a collection of related processes which can all be signalled at once.
+A session is a collection of process groups, which are either attached to a single terminal device (known as the controlling terminal) or not attached to any terminal.
+
+---------------------------------------------------------------------------------------------------------------------
+ps -x : An alternate description is that this option causes ps to list all processes owned by you (same EUID as ps), 
+ps -ax: or to list all processes when used together with the a option -> same az -e
+
+ps -u: Select by effective user ID (EUID) or name. This selects the processes whose effective user name or ID is in userlist. The effective user ID describes the user whose file access permissions are used by the process (see geteuid(2)). Identical to U and --user. has more columns like USER, START, CPU% ,RSS & etc.
+
+ps -w: Wide output. Use this option twice for unlimited width. TYpe of output format that extends the width of the COMMAND part of the table if used once it is always on on the terminal.
+
+ps -e: see every process in standard index. includes PID, TTY, TIME and CMD.
+
+ps -ef: ASCII art process hierarchy (forest). it has UID,PPID,C and STIME in the columns. C stand for processor utilization. Currently, this is the integer value of the percent usage over the lifetime of the process. (see %cpu).
+
+ps -ejH: j is Jobs format and H is show process hierarchy (forest). We have PGID (process group ID or, equivalently, the process ID of the process group leader) and SID (session ID or, equivalently, the process ID of the session leader. (alias session, sid).) columns.
+
+ps -a: TTY does not have ?
+ps -A: same as ps -e
+
+==========================================================================================
+B.
+-aux : all process using the user format describe
+-auxw : like previous but extended width

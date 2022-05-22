@@ -1,0 +1,77 @@
+inf_loop =>
+
+1. use ps -a and the a.out for the name of the programm
+2. R+  without sleep -> Running & is the foreground process
+   S+  with sleep -> interruptible sleEp 9waiting for an event to complete & is foregraound processs
+
+3. Use kill -STOP <pid> to stop it. T -> stopped, either by a job control signal or because it is being traced.
+
+4. if using sleep CPU util time or TIME is 0:00:00 and other stuff is exactly the same. But if not the the TIME argument is stable now.
+
+5.TO resume it in its own terminal using jobs can find the id. and now using the fg command will bring it back up to the foreground.
+jobs
+[1] + suspended (signal) .a/.out
+
+fg %1
+
+if using sleep it is still S+ and time is 0:00:00. But without it the stat is R+ and the time is resuming
+
+
+=====================================================================================================================================
+1.the TIME header shows the running time of the program from its start to its finished. so when it is suspended then the timer is paused.
+
+=====================================================================================================================================
+1. The programm runs on the same interface az the terminal an messes with the output of data and how it's shown on the screen. but the input is always the same.
+using the kill command i stopped it but don't know if this is what was intedned!
+
+=====================================================================================================================================
+1. pid output to the child process is 0 and to the parent is a positive integer. so if it's zero then we are in the child process not parent.
+
+   if wait() is called then the parent process waits for the termination of its child. It recives a number that says the status of which the
+   child has exited.
+
+2. execlp : l option gets individual parameters in the call (arg list) which in our case is only "ls", and then the p option uses PATH to serach for exec file.
+
+3.use this command to show PID
+printf("\nHello Child PID: %d started, Parent PID: %d\n",getpid(),getppid());
+
+the child still continuse going with the same exec file
+the systemd (7854) is the parent of the child now. lib/systemd/systemd --user
+=======================================================================================================================================
+waitpid is the suspension of the threads until a specific child chaned status
+wait just suspends until one of the children has chaned status
+
+the first one is equvilent to the wait(&status) -> it waited for a change of status then resumed the program but by the time that happend all procc were finished
+waits for the first child to finish the resmues the action. 
+
+output of the files are located on the program2Output text file
+========================================================================================================================================
+2. it's a list of programms that are runnign and the other things like TTY, uptime and etc. the proc filesystem is a pseudo-filesystem which provides an
+interface to kernel data structurES.  it is commonly mounted at /proc.  
+ 
+3.the first column refers to THE Irq numBER. eACH cpu in the system has its own column and its own number of interrupts pER iRQ. the next column reports the type of interrupt, and the last column contains the name of the device that is located aT THat irq.
+
+An irQ (iNTERRUPT REquEST) VALUE IS AN ASSIGNED LOCATION WHERE THE COMPUTER CAN EXPECT A PARTICULAR DEVICE TO INTERRUPT IT WHEN THE DEVICE SENDS THE COMPUTER SIGNALS ABOUT ITS OPERATION.
+
+4.syscall , timer, arch_status, exe(exec file), cwd(directory)
+
+5.*cmdline		this file shows the parameters passed to the kernel at the time it is started. 
+  
+  *map          A file containing the currently mapped memory regions and their access permissions.
+  
+  *self			WHEN A PROCESS ACCESSES THIS MAGIC SYMBOLIC LINK, IT RESOLVES TO THE PROCESS'S OWN /PROC/[PID] DIRECTORY.
+  
+  *status 		stat and statm info in a readble format for humans.
+  
+  *root 		this file is a symbolic link that points to the process's root directory, and behaves in the same way as exe, ANd fd/*. It provides the view of the filesystem as the process itself.
+  
+  *stat 		Status information about the process. This is used by ps(1). pid, comm (file name of executable), state, ppid, pgrp, session and etc.
+
+  *statm        provides information about memory usage, measured in page. size, resident, shared, text, lib, data(data+stack). smaps has the more accurate versions of this
+
+  *envrion 		this file contains the initial environment that was set when the currently executing program was started. If the enviroment is changed then this file will not 
+  reflect it. 
+
+  *exe 			symbolic link containing the actual pathname of the executed command. 
+
+  *fd 	 		this is a subdirectory containing one entry for each file which the process has open, named by its file descriptor, and which is a symbolic link to the actual file.
